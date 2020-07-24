@@ -569,9 +569,48 @@ li.menu__list-item:last-child {
     border: none;
 }
 
+.slides {
+    max-width: 44%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
 .header__image {
-    max-width: 45%;
+    width: 100%;
     height: auto;
+    animation: slideshow 5s infinite;
+}
+
+@keyframes slideshow {
+    90% {
+        transform: translate(0);
+
+    }
+
+    100% {
+        transform: translate(-100%);
+    }
+}
+
+#slider-1:checked ~ .img-visible {
+    transform: translateX(0);
+}
+
+#slider-2:checked ~ .img-visible {
+    transform: translateX(-100%);
+}
+
+#slider-3:checked ~ .img-visible {
+    transform: translateX(-200%);
+}
+
+#slider-4:checked ~ .img-visible {
+    transform: translatX(-300%);
+}
+
+#slider-5:checked ~ .img-visible {
+    transform: translateX(-400%);
 }
 
 .pagination {
@@ -584,17 +623,30 @@ li.menu__list-item:last-child {
 }
 
 .pagination-item {
+    display: none;
+}
+
+.pagination-item__point {
+    display: block;
     width: 7px;
     height: 7px;
     background: #FFFFFF;
     opacity: 0.5;
     border-radius: 3.5px;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s linear;
 }
 
-.pagination-item.scroll-active {
+.pagination-item__point:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+.pagination-item:checked + .pagination-item__point {
     width: 15px;
     opacity: 1;
+    transition: all 0.2s linear;
 }
 
 .features {
@@ -874,13 +926,15 @@ li.menu__list-item:last-child {
         left: 0;
         z-index: -10;
         background-color: #1E389D;
+        transition: all 0.2s;
     }
 
     .header.header--active::before {
-        height: 100%;
+        height: 100vh;
         z-index: 10;
         opacity: 0.95;
         background-color: #1E389D;
+        transition: all 0.2s;
     }
 
     .header__top {
@@ -895,17 +949,19 @@ li.menu__list-item:last-child {
 
     .menu__list {
         display: none;
+
     }
 
     .menu__list.list--visible {
         position: absolute;
         width: 65px;
         top: 80px;
+        left: 50%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        right: calc(50vw - 65px / 2);
+        transform: translateX(-50%);
         z-index: 20;
     }
 
@@ -929,10 +985,10 @@ li.menu__list-item:last-child {
         display: block;
         position: absolute;
         top: 430px;
-        right: 10px;
+        left: 50%;
         z-index: 20;
         margin: 0;
-        right: calc(50vw - 143px / 2);
+        transform: translateX(-50%);
     }
 
     .menu__hamburger {
@@ -1018,16 +1074,21 @@ li.menu__list-item:last-child {
         height: 35px;
     }
 
-    .header__image {
+    .slides {
         max-width: 70%;
+    }
+
+    .header__image {
+        max-width: 100%;
     }
 
     .pagination {
         flex-direction: row;
         margin-top: 15px;
+        width: auto;
     }
 
-    .pagination-item+.pagination-item {
+    .pagination-item__point {
         margin-left: 5px;
     }
 
