@@ -592,7 +592,7 @@ li.menu__list-item:last-child {
     margin-bottom: 10px;
 }
 
-.scroll-1 {
+.pagination-item.scroll-active {
     width: 15px;
     opacity: 1;
 }
@@ -609,13 +609,13 @@ li.menu__list-item:last-child {
     font-size: 35px;
     line-height: 45px;
     color: #202020;
-    text-align: center;
 }
 
 .features__title {
     max-width: 321px;
     margin: 0 auto;
     padding-top: 65px;
+    text-align: center;
 }
 
 .features__container {
@@ -634,8 +634,8 @@ li.menu__list-item:last-child {
 }
 
 .features__item-icon {
-    max-height: 150px;
     max-width: 100%;
+    margin-bottom: auto;
 }
 
 .features__item-title {
@@ -744,7 +744,7 @@ li.menu__list-item:last-child {
     position: relative;
 }
 
-.testimonial__item::after {
+.testimonial__item::before {
     content: '';
     width: 100%;
     height: 100%;
@@ -763,6 +763,7 @@ li.menu__list-item:last-child {
     display: flex;
     flex-direction: column;
     padding: 0 0 0 20px;
+    z-index: 1;
 }
 
 .testimonial__icon {
@@ -793,6 +794,7 @@ li.menu__list-item:last-child {
     line-height: 24px;
     text-align: center;
     margin: 50px 0 0 0;
+    z-index: 1;
 }
 
 .testimonial__perfomance::before {
@@ -810,7 +812,7 @@ li.menu__list-item:last-child {
 }
 
 .footer__items {
-    width: 359px;
+    min-width: 290px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -862,6 +864,25 @@ li.menu__list-item:last-child {
         min-height: 505px;
     }
 
+    .header::before {
+        content: "";
+        position: absolute;
+        height: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -10;
+        background-color: #1E389D;
+    }
+
+    .header.header--active::before {
+        height: 100%;
+        z-index: 10;
+        opacity: 0.95;
+        background-color: #1E389D;
+    }
+
     .header__top {
         justify-content: space-between;
     }
@@ -869,15 +890,49 @@ li.menu__list-item:last-child {
     .menu {
         margin: 2px 0 0 0;
         padding: 0;
-        width: 70px;
+        width: 50px;
     }
 
     .menu__list {
         display: none;
     }
 
+    .menu__list.list--visible {
+        position: absolute;
+        width: 65px;
+        top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        right: calc(50vw - 65px / 2);
+        z-index: 20;
+    }
+
+    .menu__list-item {
+        line-height: 65px;
+    }
+
+    .menu__list-item+.menu__list-item {
+        margin: 0;
+    }
+
+    li.menu__list-item:last-child {
+        margin: 0;
+    }
+
     .signup-btn {
         display: none;
+    }
+
+    .signup-btn.visible {
+        display: block;
+        position: absolute;
+        top: 430px;
+        right: 10px;
+        z-index: 20;
+        margin: 0;
+        right: calc(50vw - 143px / 2);
     }
 
     .menu__hamburger {
@@ -887,8 +942,15 @@ li.menu__list-item:last-child {
         justify-content: space-around;
         align-items: center;
         cursor: pointer;
-        width: 70px;
+        width: 100%;
         height: 100%;
+        border-radius: 2px;
+    }
+
+    .menu__hamburger.active {
+        display: block;
+        position: relative;
+        z-index: 20;
     }
 
     .menu__hamburger span {
@@ -896,6 +958,27 @@ li.menu__list-item:last-child {
         height: 3px;
         background-color: #FFFFFF;
         border-radius: 25%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .menu__hamburger.active span:nth-of-type(1) {
+        transform: rotate(145deg);
+    }
+
+    .menu__hamburger.active span:nth-of-type(3) {
+        transform: rotate(-145deg);
+    }
+
+    .menu__hamburger.active span {
+        position: absolute;
+        top: 47%;
+        left: 9%;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .menu__hamburger.active span:nth-of-type(2) {
+        opacity: 0;
     }
 
     .header__content {
@@ -974,6 +1057,10 @@ li.menu__list-item:last-child {
         padding: 0 2px;
     }
 
+    .our-work__title {
+        text-align: center;
+    }
+
     .our-work__item {
         flex-direction: column-reverse;
         align-items: center;
@@ -1001,7 +1088,7 @@ li.menu__list-item:last-child {
         padding: 20px 10px 20px 10px;
     }
 
-    .testimonial__item::after {
+    .testimonial__item::before {
         margin-left: -10px;
     }
 
