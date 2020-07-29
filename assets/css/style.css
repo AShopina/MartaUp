@@ -497,6 +497,7 @@ li.menu__list-item:last-child {
 
 .menu__list-item:hover {
     opacity: 1;
+    transition-duration: 0.5s;
 }
 
 .menu__list-item+.menu__list-item {
@@ -530,6 +531,17 @@ li.menu__list-item:last-child {
     cursor: pointer;
     border: none;
     padding: 0;
+}
+
+.signup-btn:hover{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.3s;
+}
+
+.signup-btn:active {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(2px);
+    transition-duration: 0.1s;
 }
 
 .header__content {
@@ -567,6 +579,17 @@ li.menu__list-item:last-child {
     outline: none;
     cursor: pointer;
     border: none;
+}
+
+.header__request-btn:hover{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.3s;
+}
+
+.header__request-btn:active {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(2px);
+    transition-duration: 0.1s;
 }
 
 .slides {
