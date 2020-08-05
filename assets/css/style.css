@@ -541,6 +541,7 @@ li.menu__list-item:last-child {
 .signup-btn:active {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     transform: translateY(2px);
+    border: 2px solid blue;
     transition-duration: 0.1s;
 }
 
@@ -589,52 +590,40 @@ li.menu__list-item:last-child {
 .header__request-btn:active {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     transform: translateY(2px);
+    border: 2px solid blue;
     transition-duration: 0.1s;
 }
 
 .slides {
-    max-width: 44%;
+    width: 75%;
+    overflow: hidden;
+    margin: 0 15px;
+}
+
+.slides-wrapper {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    overflow: hidden;
+    margin-left: 0;
+    transition: all ease 1s;
 }
 
 .header__image {
-    width: 100%;
+    min-width: 100%;
     height: auto;
-    animation: slideshow 5s infinite;
+    animation: slideshow 15s linear infinite;
 }
 
-@keyframes slideshow {
-    90% {
+/* @keyframes slideshow {
+    0% {
         transform: translate(0);
-
     }
 
     100% {
-        transform: translate(-100%);
+        transform: translate(-400%);
     }
-}
-
-#slider-1:checked ~ .img-visible {
-    transform: translateX(0);
-}
-
-#slider-2:checked ~ .img-visible {
-    transform: translateX(-100%);
-}
-
-#slider-3:checked ~ .img-visible {
-    transform: translateX(-200%);
-}
-
-#slider-4:checked ~ .img-visible {
-    transform: translatX(-300%);
-}
-
-#slider-5:checked ~ .img-visible {
-    transform: translateX(-400%);
-}
+} */
 
 .pagination {
     display: flex;
@@ -643,6 +632,7 @@ li.menu__list-item:last-child {
     list-style: none;
     padding: 0;
     margin-top: 75px;
+    margin-left: 10px;
 }
 
 .pagination-item {
@@ -666,10 +656,10 @@ li.menu__list-item:last-child {
     transform: scale(1.1);
 }
 
-.pagination-item:checked + .pagination-item__point {
+.point-active {
     width: 15px;
     opacity: 1;
-    transition: all 0.2s linear;
+    transition: all 0.4s linear;
 }
 
 .features {
@@ -817,6 +807,8 @@ li.menu__list-item:last-child {
     padding: 35px 20px 35px 20px;
     margin: 0 10px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .testimonial__item::before {
@@ -824,14 +816,16 @@ li.menu__list-item:last-child {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: rgb(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     top: 0;
     margin-left: -20px;
+    z-index: 0;
 }
 
 .testimonial__head {
     display: flex;
+    margin-bottom: auto;
 }
 
 .testimonial__author {
@@ -869,6 +863,7 @@ li.menu__list-item:last-child {
     line-height: 24px;
     text-align: center;
     margin: 50px 0 0 0;
+    position: relative;
     z-index: 1;
 }
 
