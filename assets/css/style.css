@@ -444,6 +444,11 @@ body {
     margin-top: 2px;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.logo:hover {
+    transform: scale(1.1);
 }
 
 .logo__title {
@@ -456,7 +461,6 @@ body {
     color: #FFFFFF;
     margin-left: 12px;
 }
-
 
 .menu {
     width: 50%;
@@ -531,18 +535,18 @@ li.menu__list-item:last-child {
     cursor: pointer;
     border: none;
     padding: 0;
+    transition-duration: 0.1s;
 }
 
-.signup-btn:hover{
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-    transition-duration: 0.3s;
+.signup-btn:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.01);
 }
 
 .signup-btn:active {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    transform: translateY(2px);
+    box-shadow: 5px 5px 5px rgba(34, 25, 25, 0.8);
+    transform: translateY(2px) scale(1.01);
     border: 2px solid blue;
-    transition-duration: 0.1s;
 }
 
 .header__content {
@@ -580,18 +584,18 @@ li.menu__list-item:last-child {
     outline: none;
     cursor: pointer;
     border: none;
+    transition-duration: 0.1s;
 }
 
-.header__request-btn:hover{
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-    transition-duration: 0.3s;
+.header__request-btn:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.01);
 }
 
 .header__request-btn:active {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    transform: translateY(2px);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+    transform: translateY(2px) scale(1.01);
     border: 2px solid blue;
-    transition-duration: 0.1s;
 }
 
 .slides {
@@ -612,7 +616,7 @@ li.menu__list-item:last-child {
 .header__image {
     min-width: 100%;
     height: auto;
-    animation: slideshow 15s linear infinite;
+    /* animation: slideshow 15s linear infinite; */
 }
 
 /* @keyframes slideshow {
