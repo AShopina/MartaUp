@@ -7,18 +7,19 @@ document.querySelector('.menu__hamburger').onclick = function () {
 };
 
 
+
+
 // code for slider
-let pagination = document.querySelector('.pagination');
-let points = document.querySelectorAll('.pagination-item__point');
+const pagination = document.querySelector('.pagination');
+const points = document.querySelectorAll('.pagination-item__point');
 let pointsArray = Array.from(points);
-let targetPoint = pointsArray[0];
-let numActivePoint;
-let slides = document.querySelector('.slides-wrapper');
+let counter = 0;
+let targetPoint = pointsArray[counter];
+const slides = document.querySelector('.slides-wrapper');
 
-pagination.addEventListener('click', target);
-pagination.addEventListener('click', slider);
+pagination.addEventListener('click', getTarget);
 
-function target(event) {
+function getTarget(event) {
     targetPoint = event.target;
     if (!targetPoint.classList.contains('pagination-item__point')) return;
     activePoint(targetPoint);
@@ -33,11 +34,11 @@ function activePoint() {
 }
 
 function numOfPoint(targetPoint) {
-    numActivePoint = pointsArray.indexOf(targetPoint);
-    return numActivePoint;
+    let numActivePoint = pointsArray.indexOf(targetPoint);
+    slider(numActivePoint);
 }
 
-function slider() {
+function slider(numActivePoint) {
     let sliderLeft = -numActivePoint * 100;
     slides.style['margin-left'] = sliderLeft + "%";
 }
@@ -45,27 +46,14 @@ function slider() {
 
 // code for animation
 function animationSlider() {
-    let offsetLeft = 0;
-    let countPoint = 0;
-    let step = 100;
-
-    setTimeout(function go() {
-        if (offsetLeft > (-(pointsArray.length - 1) * step) && (countPoint < pointsArray.length - 1)) {
-            offsetLeft -= step;
-            slides.style['margin-left'] = offsetLeft + "%";
-            pointsArray[countPoint].classList.toggle('point-active');
-            pointsArray[++countPoint].classList.toggle('point-active');
-            setTimeout(go, 1000);
-        } else {
-            offsetLeft = 0;
-            slides.style['margin-left'] = offsetLeft + "%";
-            pointsArray[countPoint].classList.toggle('point-active');
-            countPoint = 0;
-            pointsArray[countPoint].classList.toggle('point-active');
-            setTimeout(go, 1000);
-        }
-    }, 1000);
-};
-
+    
+    if (counter < 5) {
+        targetPoint = pointsArray[counter++];
+        setTimeout(animationSlider, 3000);
+    } else {
+        counter = 0;
+        setTimeout(animationSlider, 3000);
+    }
+    activePoint(targetPoint);
+}
 animationSlider();
-
